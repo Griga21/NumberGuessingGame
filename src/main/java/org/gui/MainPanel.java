@@ -2,18 +2,16 @@ package org.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static org.gui.Utils.mainPanel;
-import static org.logic.ActionButton.createGamePanel;
+import static org.logic.ActionButton.addStartGame;
 
 
 public class MainPanel {
     public static JButton startButton = new JButton();
-    private JTextField hiddenNumber = new JTextField();
-    private JTextField minNumber = new JTextField();
-    private JTextField maxNumber = new JTextField();
+    public static JTextField hiddenNumber = new JTextField();
+    public static JTextField minNumber = new JTextField();
+    public static JTextField maxNumber = new JTextField();
     private JLabel titleGame = new JLabel("Number Guessing", SwingConstants.CENTER);
     private JLabel hiddenNumberLabel = new JLabel("Make a number", SwingConstants.CENTER);
     private JLabel minNumberLabel = new JLabel("Minimum Value", SwingConstants.CENTER);
@@ -65,14 +63,9 @@ public class MainPanel {
         mainPanel.add(minNumber, c);
         mainPanel.add(maxNumberLabel, c);
         mainPanel.add(maxNumber, c);
+        addStartGame();
         return mainPanel;
     }
-    public  void addActionButton(){
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                createGamePanel();
-            }
-        });
-    }
+
+
 }
