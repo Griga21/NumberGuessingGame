@@ -4,13 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 import static org.gui.Utils.gamePanel;
+import static org.logic.ActionButton.addChangeNumber;
 import static org.logic.ActionButton.addEndGame;
 
 public class GamePanel {
     public static JButton yesButton = new JButton();
-    private static JLabel hiddenNumberLabel = new JLabel("0", SwingConstants.CENTER);
+    public static JButton noButton = new JButton();
+    public static JLabel hiddenNumberLabel = new JLabel("0", SwingConstants.CENTER);
     private JLabel title = new JLabel("Is this your number?", SwingConstants.CENTER);
-    private JButton noButton = new JButton();
+
 
     public JPanel initGamePanel() {
         gamePanel.setBackground(Color.WHITE);
@@ -39,6 +41,7 @@ public class GamePanel {
         gamePanel.add(yesButton, c);
         gamePanel.add(noButton, c);
         addEndGame();
+        addChangeNumber();
 
         return gamePanel;
     }
