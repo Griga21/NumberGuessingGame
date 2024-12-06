@@ -3,13 +3,10 @@ package org.logic;
 import org.gui.GamePanel;
 import org.gui.QuestionPanel;
 
-import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.gui.GamePanel.yesButton;
-import static org.gui.GamePanel.noButton;
+import static org.gui.GamePanel.*;
 import static org.gui.MainPanel.*;
 import static org.gui.QuestionPanel.biggerButton;
 import static org.gui.QuestionPanel.lessButton;
@@ -29,6 +26,9 @@ public class ActionButton {
                 algorithm.setHiddenValue(Double.parseDouble(hiddenNumber.getText()));
                 algorithm.setMinValue(Integer.parseInt(minNumber.getText()));
                 algorithm.setMaxValue(Integer.parseInt(maxNumber.getText()));
+                algorithm.initArrayList();
+                hiddenNumberLabel.setText(maxNumber.getText());
+
                 frame.getContentPane().remove(mainPanel);
                 frame.add(new GamePanel().initGamePanel());
                 frame.invalidate();
@@ -72,9 +72,9 @@ public class ActionButton {
         lessButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithm.setMinValue(Integer.parseInt(minNumber.getText()));
-                algorithm.setMaxValue(Integer.parseInt(maxNumber.getText()));
-
+                algorithm.guessNumber(false);
+                algorithm.setMaxValue(algorithm.getResultIndex());
+                changeNumber();
                 gamePanel.removeAll();
                 questionPanel.removeAll();
                 frame.getContentPane().remove(questionPanel);
@@ -82,7 +82,7 @@ public class ActionButton {
                 frame.invalidate();
                 frame.validate();
                 frame.repaint();
-                changeNumber();
+
             }
         });
     }
@@ -91,8 +91,8 @@ public class ActionButton {
         biggerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                algorithm.setMinValue(Integer.parseInt(minNumber.getText()));
-                algorithm.setMaxValue(Integer.parseInt(maxNumber.getText()));
+                algorithm.guessNumber(true);
+                algorithm.setMinValue(algorithm.getResultIndex());
                 questionPanel.removeAll();
                 gamePanel.removeAll();
                 frame.getContentPane().remove(questionPanel);

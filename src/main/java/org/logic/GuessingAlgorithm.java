@@ -1,49 +1,46 @@
 package org.logic;
 
-import static org.gui.GamePanel.hiddenNumberLabel;
+import java.util.ArrayList;
 
 public class GuessingAlgorithm {
 
     private double hiddenValue;
+    private int lessIndex;
+    private int biggerIndex;
     private double minValue;
     private double maxValue;
-    public static int result;
-
-    public double getHiddenValue() {
-        return hiddenValue;
-    }
+    private int resultIndex;
+    private ArrayList<Integer> arrayList = new ArrayList<>();
 
     public void setHiddenValue(double hiddenValue) {
         this.hiddenValue = hiddenValue;
     }
 
 
-    public double getMinValue() {
-        return minValue;
-    }
-
     public void setMinValue(double minValue) {
         this.minValue = minValue;
     }
 
-    public double getMaxValue() {
-        return maxValue;
-    }
 
     public void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }
 
-    public void guessNumber() {
-        if (maxValue - minValue % 2 == 0) {
-            result = (int) (maxValue - minValue) / 2;
-        } else {
-            result = (int) Math.ceil((maxValue - minValue) / 2);
-        }
-        hiddenNumberLabel.setText(Integer.toString(result));
+    public void initArrayList() {
+        for (int i = (int) minValue; i < maxValue; i++)
+            arrayList.add(i);
+        biggerIndex = arrayList.size();
     }
 
-    public int getResult() {
-        return result;
+    public void guessNumber(boolean option) {
+        if (option) {
+            lessIndex += (biggerIndex - lessIndex) / 2;
+        } else {
+            biggerIndex -= (biggerIndex - lessIndex) / 2;
+        }
+    }
+
+    public int getResultIndex() {
+        return resultIndex;
     }
 }

@@ -3,13 +3,14 @@ package org.gui;
 import javax.swing.*;
 import java.awt.*;
 
+import static org.gui.Utils.algorithm;
 import static org.gui.Utils.questionPanel;
 import static org.logic.ActionButton.biggerButtonAction;
 import static org.logic.ActionButton.lessButtonAction;
-import static org.logic.GuessingAlgorithm.result;
+
 
 public class QuestionPanel {
-    private JLabel title = new JLabel("Your number bigger or less then " + result + "?", SwingConstants.CENTER);
+    private JLabel title = new JLabel("Your number bigger or less then " + algorithm.getResultIndex() + "?", SwingConstants.CENTER);
     public static JButton lessButton = new JButton();
     public static JButton biggerButton = new JButton();
 
