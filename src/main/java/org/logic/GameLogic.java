@@ -5,9 +5,17 @@ import java.util.ArrayList;
 public class GameLogic {
     private int minIndex;
     private int maxIndex;
-    private int resultIndex;
-    private ArrayList<Integer> arrayList = new ArrayList<>();
+    private  int resultIndex;
+    private  ArrayList<Integer> arrayList = new ArrayList<>();
     private int sizeArray = 101;
+
+
+    public  ArrayList<Integer> getArrayList() {
+        return arrayList;
+    }
+    public  int getResultIndex() {
+        return resultIndex;
+    }
 
     public void initArrayList() {
         for (int i = 0; i < sizeArray; i++) arrayList.add(i);

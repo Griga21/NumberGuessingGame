@@ -1,7 +1,5 @@
 package org.gui;
 
-import org.logic.GameLogic;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,15 +7,15 @@ import java.awt.event.ActionListener;
 
 import static org.gui.Utils.*;
 
-
-public class GamePanel extends JPanel {
+public class MainPanel extends JPanel {
     private JLabel title;
-    private JButton yesButton;
-    private JButton noButton;
+    private JButton startButton;
+    private JButton aboutButton;
 
-    public void initPanel(GameLogic gameLogic) {
-        this.setBackground(Color.white);
+
+    public void initMainPanel() {
         this.setLayout(new GridBagLayout());
+        this.setBackground(Color.WHITE);
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(5, 20, 5, 20);
@@ -26,37 +24,33 @@ public class GamePanel extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        title = new JLabel("Is this your number " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?", SwingConstants.CENTER);
+
+        title = new JLabel("Number Guessing Game", SwingConstants.CENTER);
         title.setFont(new Font("Ink Free", Font.BOLD, 25));
         this.add(title, constraints);
 
-        yesButton = new JButton("Yes");
-        yesButton.setFont(new Font("Ink Free", Font.BOLD, 25));
+        startButton = new JButton("Start");
+        startButton.setFont(new Font("Ink Free", Font.BOLD, 25));
         constraints.gridx = 0;
         constraints.gridy = 1;
-        this.add(yesButton, constraints);
+        this.add(startButton, constraints);
 
-        noButton = new JButton("No");
+        aboutButton = new JButton("About game");
         constraints.gridx = 0;
         constraints.gridy = 2;
-        noButton.setFont(new Font("Ink Free", Font.BOLD, 25));
-        this.add(noButton, constraints);
+        aboutButton.setFont(new Font("Ink Free", Font.BOLD, 25));
+        this.add(aboutButton, constraints);
         addActionButton();
     }
 
     private void addActionButton() {
-        yesButton.addActionListener(new ActionListener() {
+        startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.getContentPane().remove(gamePanel);
-                frame.add(mainPanel);
+                frame.getContentPane().remove(mainPanel);
+                frame.add(gamePanel);
+                frame.revalidate();
                 frame.repaint();
-            }
-        });
-        noButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
     }
