@@ -15,7 +15,11 @@ public class GamePanel extends JPanel {
     private JButton yesButton;
     private JButton noButton;
 
-    public void initPanel(GameLogic gameLogic) {
+    public JLabel getTitle() {
+        return title;
+    }
+
+    public void initPanel() {
         this.setBackground(Color.white);
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -50,13 +54,18 @@ public class GamePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().remove(gamePanel);
                 frame.add(mainPanel);
+                frame.revalidate();
                 frame.repaint();
             }
         });
         noButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.getContentPane().remove(gamePanel);
+                questionPanel.getTitle().setText("Less or bigger then " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
+                frame.add(questionPanel);
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
