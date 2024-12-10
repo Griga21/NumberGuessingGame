@@ -31,15 +31,17 @@ public class MainFrame extends JFrame {
     }
 
     private void initAllPanels() {
-        GameLogic gameLogic = new GameLogic();
+        gameLogic = new GameLogic();
         gameLogic.initArrayList();
 
         mainPanel = new MainPanel();
         mainPanel.initMainPanel();
 
         gamePanel = new GamePanel();
-        gamePanel.initPanel(gameLogic);
+        gamePanel.initPanel();
 
+        questionPanel = new QuestionPanel();
+        questionPanel.initQuestionPanel();
 
     }
 
