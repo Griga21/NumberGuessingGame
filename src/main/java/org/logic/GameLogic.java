@@ -28,7 +28,7 @@ public class GameLogic {
         else
             minIndex = resultIndex;
 
-        resultIndex = (int) Math.ceil((maxIndex - minIndex) / 2);
+        resultIndex = (int) Math.ceil((maxIndex - minIndex) / 2) + minIndex;
         return resultIndex;
     }
 
