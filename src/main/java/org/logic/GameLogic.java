@@ -5,21 +5,34 @@ import java.util.ArrayList;
 public class GameLogic {
     private int minIndex;
     private int maxIndex;
-    private  int resultIndex;
-    private  ArrayList<Integer> arrayList = new ArrayList<>();
+    private int resultIndex;
+    private ArrayList<Integer> arrayList = new ArrayList<>();
     private int sizeArray = 101;
 
-
-    public  ArrayList<Integer> getArrayList() {
-        return arrayList;
+    public void setMinIndex(int minIndex) {
+        this.minIndex = minIndex;
     }
-    public  int getResultIndex() {
+
+    public void setMaxIndex(int maxIndex) {
+        this.maxIndex = maxIndex;
+    }
+
+    public void setResultIndex(int resultIndex) {
+        this.resultIndex = resultIndex;
+    }
+
+    public int getResultIndex() {
         return resultIndex;
+    }
+
+    public ArrayList<Integer> getArrayList() {
+        return arrayList;
     }
 
     public void initArrayList() {
         for (int i = 0; i < sizeArray; i++) arrayList.add(i);
         resultIndex = (int) Math.ceil(sizeArray / 2);
+        maxIndex = sizeArray - 1;
     }
 
     public Integer guessNumber(boolean less) {

@@ -1,7 +1,5 @@
 package org.gui;
 
-import org.logic.GameLogic;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,13 +18,7 @@ public class GamePanel extends JPanel {
     }
 
     public void initPanel() {
-        this.setBackground(Color.white);
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(5, 20, 5, 20);
-        constraints.ipadx = 15;
-        constraints.ipady = 50;
+        setBackGroundPanel(this);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -53,9 +45,11 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().remove(gamePanel);
+                gameLogic.setMinIndex(0);
+                gameLogic.setMaxIndex(gameLogic.getArrayList().size());
+                gameLogic.setResultIndex(gameLogic.getArrayList().size() / 2);
                 frame.add(mainPanel);
-                frame.revalidate();
-                frame.repaint();
+                repaintFrame();
             }
         });
         noButton.addActionListener(new ActionListener() {
@@ -64,8 +58,7 @@ public class GamePanel extends JPanel {
                 frame.getContentPane().remove(gamePanel);
                 questionPanel.getTitle().setText("Less or bigger then " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
                 frame.add(questionPanel);
-                frame.revalidate();
-                frame.repaint();
+                repaintFrame();
             }
         });
     }

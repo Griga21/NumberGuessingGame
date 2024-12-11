@@ -20,13 +20,7 @@ public class QuestionPanel extends JPanel {
     }
 
     public void initQuestionPanel() {
-        this.setLayout(new GridBagLayout());
-        this.setBackground(Color.WHITE);
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(5, 20, 5, 20);
-        constraints.ipadx = 15;
-        constraints.ipady = 50;
+        setBackGroundPanel(this);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -49,7 +43,7 @@ public class QuestionPanel extends JPanel {
         addActionButtons();
     }
 
-    private void addActionButtons(){
+    private void addActionButtons() {
         biggerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,8 +51,7 @@ public class QuestionPanel extends JPanel {
                 gamePanel.getTitle().setText("Is this your number " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
                 frame.getContentPane().remove(questionPanel);
                 frame.add(gamePanel);
-                frame.revalidate();
-                frame.repaint();
+                repaintFrame();
             }
         });
         lessButton.addActionListener(new ActionListener() {
@@ -68,8 +61,7 @@ public class QuestionPanel extends JPanel {
                 gamePanel.getTitle().setText("Is this your number " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
                 frame.getContentPane().remove(questionPanel);
                 frame.add(gamePanel);
-                frame.revalidate();
-                frame.repaint();
+                repaintFrame();
             }
         });
     }

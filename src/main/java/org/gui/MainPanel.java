@@ -16,11 +16,6 @@ public class MainPanel extends JPanel {
     public void initMainPanel() {
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.WHITE);
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(5, 20, 5, 20);
-        constraints.ipadx = 15;
-        constraints.ipady = 50;
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -48,9 +43,9 @@ public class MainPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().remove(mainPanel);
+                gamePanel.getTitle().setText("Is this your number " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
                 frame.add(gamePanel);
-                frame.revalidate();
-                frame.repaint();
+                repaintFrame();
             }
         });
     }
