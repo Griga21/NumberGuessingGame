@@ -1,4 +1,4 @@
-package org.gui;
+package org.gui.panels;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,6 +46,16 @@ public class MainPanel extends JPanel {
                 gamePanel.getTitle().setText("Is this your number " + gameLogic.getArrayList().get(gameLogic.getResultIndex()) + "?");
                 frame.add(gamePanel);
                 repaintFrame();
+            }
+        });
+        aboutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame,
+                        "This is simple number guessing game",
+                        "Info about game",
+                        JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
     }

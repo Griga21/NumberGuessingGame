@@ -1,5 +1,8 @@
 package org.gui;
 
+import org.gui.panels.GamePanel;
+import org.gui.panels.MainPanel;
+import org.gui.panels.QuestionPanel;
 import org.logic.GameLogic;
 
 import javax.swing.*;
